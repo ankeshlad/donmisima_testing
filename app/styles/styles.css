@@ -2258,6 +2258,10 @@ dd{
   text-transform: uppercase;
 }
 
+.quantityselector{
+  background: #0000;
+ }
+
 .Toastify__toast-container{
   width: 360px !important;
 }
@@ -3289,10 +3293,6 @@ dd{
  
  .Toastify__toast-container--top-right{
    top: 100px !important;
- }
-
- .quantityselector{
-  background: #0000;
  }
  
 } 
