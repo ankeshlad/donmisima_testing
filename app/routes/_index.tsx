@@ -263,6 +263,19 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
+        onClick={() => {toast(
+          <div className={`addedToCart ${mapped_product.description.split(", ")[0].split('- ')[1].slice(0,5).toLowerCase()}`}>
+            <Image
+              data={mapped_product.images.nodes[0]}
+              aspectRatio="1/1"
+              sizes="(min-width: 45em) 20vw, 50vw"
+              style={{pointerEvents: 'none'}}
+            />
+            <div className="addedToCartInfo">
+              <p className="addedText">Added to cart</p>
+              <p className="title">{mapped_product.title}</p>
+            </div>
+          </div>)}}
       >
         Add to Cart
       </AddToCartButton>
