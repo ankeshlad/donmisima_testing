@@ -1,6 +1,7 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction, useNavigate} from '@remix-run/react';
 import {Suspense} from 'react';
+import React, { useState } from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import type {RecommendedProductsQuery} from 'storefrontapi.generated';
 import Hero from '~/components/Hero';
