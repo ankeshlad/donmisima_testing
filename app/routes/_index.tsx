@@ -227,8 +227,10 @@ function RecommendedProducts({
                         </div>
                       </Link>
                       <div className="quantity selector">
-                          <p>Quantity</p>
-                        </div>
+                      <QuantitySelector
+                      product={mapped_product}
+                    />
+                      </div>
                     </>
                   </Reveal>
               )})}
@@ -237,6 +239,32 @@ function RecommendedProducts({
         </Await>
       </Suspense>
       <br />
+    </div>
+  );
+}
+
+function QuantitySelector({ product }) {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => setQuantity(quantity + 1);
+  const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+  const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
+
+  return (
+    <div className="quantity-selector">
+      <button onClick={handleDecrease}>-</button>
+      <input type="number" value={quantity} onChange={handleChange} min="1" />
+      <button onClick={handleIncrease}>+</button>
+      <AddToCartButton
+        lines={[
+          {
+            merchandiseId: product.variants.nodes[0].id,
+            quantity: quantity,
+          },
+        ]}
+      >
+        Add to Cart
+      </AddToCartButton>
     </div>
   );
 }
