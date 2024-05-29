@@ -252,6 +252,10 @@ function QuantitySelector({ product }) {
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
   const handleAddToCart = () => {
+     // Check if exactly 10 products are added
+  if (quantity === 10) {
+    setQuantity(1); // Reset quantity to 1
+  }
     toast(
       <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
         <Image
