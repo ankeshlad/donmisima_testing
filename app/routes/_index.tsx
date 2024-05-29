@@ -219,11 +219,14 @@ function RecommendedProducts({
                             style={{pointerEvents: 'none'}}
                           />
                         </div>
-                        <div className="product_name_price">
+                        <div className="product_name_price test45">
                           <h4>{mapped_product.title}</h4>
                           <small>
                             <Money data={mapped_product.priceRange.minVariantPrice} />
                           </small>
+                        </div>
+                        <div className="quantity selector">
+                          <p>Quantity</p>
                         </div>
                       </Link>
                     </>
