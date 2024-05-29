@@ -251,6 +251,23 @@ function QuantitySelector({ product }) {
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
+  const handleAddToCart = () => {
+    toast(
+      <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
+        <Image
+          data={product.images.nodes[0]}
+          aspectRatio="1/1"
+          sizes="(min-width: 45em) 20vw, 50vw"
+          style={{ pointerEvents: 'none' }}
+        />
+        <div className="addedToCartInfo">
+          <p className="addedText">Added to cart</p>
+          <p className="title">{product.title}</p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="quantity-selector">
       <button onClick={handleDecrease}>-</button>
@@ -263,19 +280,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={() => {toast(
-          <div className={`addedToCart ${mapped_product.description.split(", ")[0].split('- ')[1].slice(0,5).toLowerCase()}`}>
-            <Image
-              data={mapped_product.images.nodes[0]}
-              aspectRatio="1/1"
-              sizes="(min-width: 45em) 20vw, 50vw"
-              style={{pointerEvents: 'none'}}
-            />
-            <div className="addedToCartInfo">
-              <p className="addedText">Added to cart</p>
-              <p className="title">{mapped_product.title}</p>
-            </div>
-          </div>)}}
+        onClick={handleAddToCart}
       >
         Add to Cart
       </AddToCartButton>
