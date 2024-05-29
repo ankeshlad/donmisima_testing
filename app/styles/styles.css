@@ -3290,5 +3290,9 @@ dd{
  .Toastify__toast-container--top-right{
    top: 100px !important;
  }
+
+ .quantityselector{
+  background: #0000;
+ }
  
 } 

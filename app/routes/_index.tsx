@@ -271,7 +271,7 @@ function QuantitySelector({ product }) {
   return (
     <div className="quantity-selector">
       <button onClick={handleDecrease}>-</button>
-      <input type="number" value={quantity} onChange={handleChange} min="1" />
+      <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
       <button onClick={handleIncrease}>+</button>
       <AddToCartButton
         lines={[
