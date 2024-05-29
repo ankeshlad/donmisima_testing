@@ -266,7 +266,25 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
+    addToCart(product, quantity);
     setQuantity(1);
+  };
+
+  const addToCart = (product, quantity) => {
+    toast(
+      <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
+        <Image
+          data={product.images.nodes[0]}
+          aspectRatio="1/1"
+          sizes="(min-width: 45em) 20vw, 50vw"
+          style={{ pointerEvents: 'none' }}
+        />
+        <div className="addedToCartInfo">
+          <p className="addedText">{quantity} Product Added to cart</p>
+          <p className="title">{product.title}</p>
+        </div>
+      </div>
+    );
   };
 
   return (
