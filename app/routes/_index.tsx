@@ -261,7 +261,7 @@ function QuantitySelector({ product }) {
           style={{ pointerEvents: 'none' }}
         />
         <div className="addedToCartInfo">
-          <p className="addedText">Added to cart</p>
+          <p className="addedText">{quantity} Product Added to cart</p>
           <p className="title">{product.title}</p>
         </div>
       </div>
