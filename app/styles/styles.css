@@ -2269,11 +2269,13 @@ dd{
 
 
  .decrementqtyselector{
-  height: 36px;
-  background: #0000;
   border: 1px solid #000;
   border-right: none;
-  border-radius: 4px 0px 0px 4px;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  margin-top: .25rem;
+  padding: .5rem;
+  background: #0000;
 }
 .btn-qtyselector{
   padding: 10px;
