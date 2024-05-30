@@ -59,7 +59,8 @@ function AddToCartButton({
             type="hidden"
             value={JSON.stringify(analytics)}
           />
-          <button
+          <button 
+          className="test"
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
@@ -283,7 +284,7 @@ function QuantitySelector({ product }) {
         ]}
         onClick={handleAddToCart}
       >
-        <div className="addtocarbtn">Add to Cart</div>
+        Add to Cart
       </AddToCartButton>
      
     </div>
