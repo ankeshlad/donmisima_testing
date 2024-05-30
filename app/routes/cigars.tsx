@@ -273,7 +273,7 @@ function ProductItem({
           </div>
         </Link>
         <QuantitySelector
-          product={mapped_product}
+          product={product}
         />
       </>
     </Reveal>
