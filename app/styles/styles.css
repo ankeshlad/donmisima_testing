@@ -2266,8 +2266,18 @@ dd{
   border-radius: 0px 0px 0px 0px;
  }
 
- .btn-qtyselector{
+
+
+ .decrementqtyselector{
+  height: 36px;
+  background: #0000;
+  border: 1px solid #000;
+  border-right: none;
+  border-radius: 4px 0px 0px 4px;
+}
+.btn-qtyselector{
   padding: 10px;
+  margin-top: 2px;
     width: 29%;
     border-radius: 21px;
     background: #252324;
@@ -2277,14 +2287,6 @@ dd{
     font-weight: 400;
     line-height: normal;
  }
-
- .decrementqtyselector{
-  height: 36px;
-  background: #0000;
-  border: 1px solid #000;
-  border-right: none;
-  border-radius: 4px 0px 0px 4px;
-}
  .incrementqtyselector{
   height: 36px;
     background: #0000;
