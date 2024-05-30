@@ -250,7 +250,7 @@ function QuantitySelector({ product }) {
 
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
-  // const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
+  const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
   const handleAddToCart = () => {
     toast(
