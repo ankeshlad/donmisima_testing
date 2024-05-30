@@ -2258,6 +2258,47 @@ dd{
   text-transform: uppercase;
 }
 
+.quantityselector{
+  background: #0000;
+  width: 88px;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px 0px 0px 0px;
+ }
+
+
+
+ .decrementqtyselector{
+  border: 1px solid #000;
+  border-right: none;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  margin-top: .25rem;
+  padding: .5rem;
+  background: #0000;
+}
+.btn-qtyselector{
+  padding: 10px;
+    width: 29%;
+    border-radius: 21px;
+    background: #252324;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+ }
+ 
+ .incrementqtyselector{
+  border: 1px solid #000;
+  border-left: none;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  margin-top: .25rem;
+  padding: .5rem;
+  background: #0000;
+  background: #0000;
+ }
 .Toastify__toast-container{
   width: 360px !important;
 }

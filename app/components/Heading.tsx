@@ -6,7 +6,7 @@ interface HeadingProps{
 
 const Heading = ({heading}: HeadingProps) => {
     return(
-        <div className="heading test45">
+        <div className="heading">
                 <div className="divider1"></div>
                     <h1>{heading}</h1>
                 <div className="divider2"></div>

@@ -1,6 +1,7 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction, useNavigate} from '@remix-run/react';
 import {Suspense} from 'react';
+import React, { useState } from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import type {RecommendedProductsQuery} from 'storefrontapi.generated';
 import Hero from '~/components/Hero';
@@ -58,7 +59,8 @@ function AddToCartButton({
             type="hidden"
             value={JSON.stringify(analytics)}
           />
-          <button
+          <button 
+          className="btn-qtyselector"
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
@@ -226,6 +228,9 @@ function RecommendedProducts({
                           </small>
                         </div>
                       </Link>
+                      <QuantitySelector
+                      product={mapped_product}
+                    />
                     </>
                   </Reveal>
               )})}
@@ -234,6 +239,51 @@ function RecommendedProducts({
         </Await>
       </Suspense>
       <br />
+    </div>
+  );
+}
+
+function QuantitySelector({ product }) {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => setQuantity(quantity + 1);
+  const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+  const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
+
+  const handleAddToCart = () => {
+    toast(
+      <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
+        <Image
+          data={product.images.nodes[0]}
+          aspectRatio="1/1"
+          sizes="(min-width: 45em) 20vw, 50vw"
+          style={{ pointerEvents: 'none' }}
+        />
+        <div className="addedToCartInfo">
+          <p className="addedText">{quantity} Product Added to cart</p>
+          <p className="title">{product.title}</p>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="quantity-selector">
+      <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
+      <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
+      <button className="incrementqtyselector" onClick={handleIncrease}>+</button>
+     
+      <AddToCartButton
+        lines={[
+          {
+            merchandiseId: product.variants.nodes[0].id,
+            quantity: quantity,
+          },
+        ]}
+        onClick={handleAddToCart}
+      >
+        Add to Cart
+      </AddToCartButton>
     </div>
   );
 }
