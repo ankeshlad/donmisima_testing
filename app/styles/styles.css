@@ -2260,6 +2260,10 @@ dd{
 
 .quantityselector{
   background: #0000;
+  width: 88px;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px 0px 0px 0px;
  }
 
  .btn-qtyselector{
@@ -2274,6 +2278,20 @@ dd{
     line-height: normal;
  }
 
+ .decrementqtyselector{
+  height: 36px;
+  background: #0000;
+  border: 1px solid #000;
+  border-right: none;
+  border-radius: 4px 0px 0px 4px;
+}
+ .incrementqtyselector{
+  height: 36px;
+    background: #0000;
+    border: 1px solid #000;
+    border-left: none;
+    border-radius: 0px 4px 4px 0px;
+ }
 .Toastify__toast-container{
   width: 360px !important;
 }
