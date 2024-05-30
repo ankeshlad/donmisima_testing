@@ -2288,12 +2288,16 @@ dd{
     font-weight: 400;
     line-height: normal;
  }
+ 
  .incrementqtyselector{
-  height: 36px;
-    background: #0000;
-    border: 1px solid #000;
-    border-left: none;
-    border-radius: 0px 4px 4px 0px;
+  border: 1px solid #000;
+  border-left: none;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  margin-top: .25rem;
+  padding: .5rem;
+  background: #0000;
+  background: #0000;
  }
 .Toastify__toast-container{
   width: 360px !important;
