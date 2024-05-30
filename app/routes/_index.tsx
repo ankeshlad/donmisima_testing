@@ -274,21 +274,20 @@ function QuantitySelector({ product }) {
       <button onClick={handleDecrease}>-</button>
       <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
       <button onClick={handleIncrease}>+</button>
+     
+      <AddToCartButton
+        lines={[
+          {
+            merchandiseId: product.variants.nodes[0].id,
+            quantity: quantity,
+          },
+        ]}
+        onClick={handleAddToCart}
+      >
+        Add to Cart
+      </AddToCartButton>
+     
     </div>
-    <div>
- <AddToCartButton
-     lines={[
-       {
-         merchandiseId: product.variants.nodes[0].id,
-         quantity: quantity,
-       },
-     ]}
-     onClick={handleAddToCart}
-   >
-     Add to Cart
-   </AddToCartButton>
-    </div>
-    
   );
 }
 
