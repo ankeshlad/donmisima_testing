@@ -228,11 +228,9 @@ function RecommendedProducts({
                           </small>
                         </div>
                       </Link>
-                      <div className="quantity selector">
                       <QuantitySelector
                       product={mapped_product}
                     />
-                      </div>
                     </>
                   </Reveal>
               )})}
@@ -286,7 +284,6 @@ function QuantitySelector({ product }) {
       >
         Add to Cart
       </AddToCartButton>
-     
     </div>
   );
 }
