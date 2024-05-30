@@ -2269,7 +2269,7 @@ dd{
 
 
  .decrementqtyselector{
-  height: 38px;
+  height: 36px;
   background: #0000;
   border: 1px solid #000;
   border-right: none;
@@ -2287,7 +2287,7 @@ dd{
     line-height: normal;
  }
  .incrementqtyselector{
-  height: 38px;
+  height: 36px;
     background: #0000;
     border: 1px solid #000;
     border-left: none;
