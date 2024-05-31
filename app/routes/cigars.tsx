@@ -348,6 +348,7 @@ function AddToCartButton({
             value={JSON.stringify(analytics)}
           />
           <button
+          className="btn-qtyselector"
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
