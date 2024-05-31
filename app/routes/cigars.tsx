@@ -265,7 +265,7 @@ function ProductItem({
               />
             )}
           </div>
-          <div className="product_name_price test45">
+          <div className="product_name_price">
             <h4>{product.title}</h4>
             <small>
               <Money data={product.priceRange.minVariantPrice} />
@@ -348,6 +348,7 @@ function AddToCartButton({
             value={JSON.stringify(analytics)}
           />
           <button
+          className="btn-qtyselector"
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
