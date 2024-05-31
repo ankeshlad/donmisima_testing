@@ -265,7 +265,7 @@ function ProductItem({
               />
             )}
           </div>
-          <div className="product_name_price">
+          <div className="product_name_price test45">
             <h4>{product.title}</h4>
             <small>
               <Money data={product.priceRange.minVariantPrice} />
