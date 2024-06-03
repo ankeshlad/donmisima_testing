@@ -62,7 +62,14 @@ function AddToCartButton({
           <button 
           className="btn-qtyselector"
             type="submit"
-            onClick={handleAddToCart}
+            // onClick={onClick}
+            onClick={() => {
+              onClick && onClick(); // Call the onClick function provided by the parent
+              if (fetcher.state === 'idle') {
+                // Reset quantity to 1 after successfully adding the product to the cart
+                setQuantity(1);
+              }
+            }}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
@@ -265,7 +272,6 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(1);
   };
  
   return (
@@ -281,7 +287,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        
+        onClick={handleAddToCart}
       >
         Add to Cart
       </AddToCartButton>
