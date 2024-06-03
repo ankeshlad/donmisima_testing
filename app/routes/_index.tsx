@@ -265,7 +265,7 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(2);
+    setQuantity(1);
   };
  
   return (
