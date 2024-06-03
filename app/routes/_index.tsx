@@ -265,15 +265,30 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-   
   };
- 
   const handleAddToCartButtonClick = () => {
     handleAddToCart();
     setQuantity(1); // Reset the quantity after handling the add to cart action
   };
 
   return (
+    // <div className="quantity-selector">
+    //   <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
+    //   <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
+    //   <button className="incrementqtyselector" onClick={handleIncrease}>+</button>
+     
+    //   <AddToCartButton
+    //     lines={[
+    //       {
+    //         merchandiseId: product.variants.nodes[0].id,
+    //         quantity: quantity,
+    //       },
+    //     ]}
+    //     onClick={handleAddToCartButtonClick}
+    //   >
+    //     Add to Cart
+    //   </AddToCartButton>
+    // </div>
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
       <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
