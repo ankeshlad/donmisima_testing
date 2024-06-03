@@ -265,9 +265,8 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(1);
   };
-
+  setQuantity(1);
   return (
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
