@@ -43,12 +43,14 @@ function AddToCartButton({
   disabled,
   lines,
   onClick,
+  onAddToCartSuccess
 }: {
   analytics?: unknown;
   children: React.ReactNode;
   disabled?: boolean;
   lines: CartLineInput[];
   onClick?: () => void;
+  onAddToCartSuccess?: () => void;
 }) {
   return (
     const handleAddToCart = async () => {
