@@ -291,7 +291,7 @@ function QuantitySelector({ product }) {
     toast(
       <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
         <Image
-          data={product.images.nodes[0]}
+          data={product.featuredImage}
           aspectRatio="1/1"
           sizes="(min-width: 45em) 20vw, 50vw"
           style={{ pointerEvents: 'none' }}
