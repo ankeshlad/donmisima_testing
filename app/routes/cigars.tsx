@@ -288,7 +288,7 @@ function QuantitySelector({ product }) {
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
-  const handleAddToCart = () => {
+  const handleAddToCartSuccess = () => {
     toast(
       <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
         <Image
@@ -303,6 +303,7 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
+    setResetQuantity(true);
   };
 
   useEffect(() => {
