@@ -265,9 +265,14 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(quantity);
+    setQuantity(1);
   };
  
+  const handleAddToCartButtonClick = () => {
+    handleAddToCart();
+    setQuantity(1); // Reset the quantity after handling the add to cart action
+  };
+
   return (
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
@@ -281,7 +286,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={handleAddToCart}
+        onClick={handleAddToCartButtonClick}
       >
         Add to Cart
       </AddToCartButton>
