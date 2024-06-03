@@ -62,7 +62,7 @@ function AddToCartButton({
           <button 
           className="btn-qtyselector"
             type="submit"
-            onClick={onClick}
+            onClick={handleAddToCart}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
@@ -246,9 +246,9 @@ function RecommendedProducts({
 function QuantitySelector({ product }) {
   const [quantity, setQuantity] = useState(1);
 
-  const handleIncrease = () => setQuantity((prevQuantity) => prevQuantity + 1);
-  const handleDecrease = () => setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
-  const handleChange = (e) => setQuantity(parseInt(e.target.value, 10) || 1);
+  const handleIncrease = () => setQuantity(quantity + 1);
+  const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+  const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
   const handleAddToCart = () => {
     toast(
@@ -265,9 +265,9 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(1); // Reset the quantity after handling the add to cart action
+    setQuantity(1);
   };
-
+ 
   return (
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
@@ -281,14 +281,13 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={handleAddToCart}
+        
       >
         Add to Cart
       </AddToCartButton>
     </div>
   );
 }
-
 
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
