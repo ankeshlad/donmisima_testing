@@ -252,11 +252,12 @@ function RecommendedProducts({
 
 function QuantitySelector({ product }) {
   const [quantity, setQuantity] = useState(1);
+  const [resetQuantity, setResetQuantity] = useState(false);
 
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
-  const initialQuantityRef = useRef(quantity);
+
 
   const handleAddToCartSuccess  = () => {
     toast(
@@ -273,8 +274,15 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(initialQuantityRef.current); 
+    setResetQuantity(true);
   };
+
+  useEffect(() => {
+    if (resetQuantity) {
+      setQuantity(1); // Reset quantity to 1 after adding to cart
+      setResetQuantity(false); // Reset the flag
+    }
+  }, [resetQuantity]);
   
   return (
     <div className="quantity-selector">
