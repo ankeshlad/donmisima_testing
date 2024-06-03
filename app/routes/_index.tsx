@@ -1,7 +1,7 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction, useNavigate} from '@remix-run/react';
 import {Suspense} from 'react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import type {RecommendedProductsQuery} from 'storefrontapi.generated';
 import Hero from '~/components/Hero';
@@ -275,7 +275,10 @@ function QuantitySelector({ product }) {
     console.log("test45");
     setQuantity(1);
   };
- 
+  useEffect(() => {
+    setQuantity(1); // Reset quantity to 1 when onAddToCartSuccess changes
+  }, [handleAddToCartSuccess]);
+  
   return (
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
