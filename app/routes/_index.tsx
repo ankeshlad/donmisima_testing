@@ -271,6 +271,7 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
+    console.log("test45");
     setQuantity(1);
   };
  
