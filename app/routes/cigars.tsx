@@ -282,16 +282,17 @@ function ProductItem({
 
 function QuantitySelector({ product }) {
   const [quantity, setQuantity] = useState(1);
+  const [resetQuantity, setResetQuantity] = useState(false);
 
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
-  const handleAddToCart = () => {
+  const handleAddToCartSuccess = () => {
     toast(
       <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
         <Image
-          data={product.images.nodes[0]}
+          data={product.featuredImage}
           aspectRatio="1/1"
           sizes="(min-width: 45em) 20vw, 50vw"
           style={{ pointerEvents: 'none' }}
@@ -302,7 +303,15 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
+    setResetQuantity(true);
   };
+
+  useEffect(() => {
+    if (resetQuantity) {
+      setQuantity(1);
+      setResetQuantity(false);
+    }
+  }, [resetQuantity]);
 
   return (
     <div className="quantity-selector">
@@ -317,7 +326,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={handleAddToCart}
+        onAddToCartSuccess={handleAddToCartSuccess}
       >
         Add to Cart
       </AddToCartButton>
@@ -331,13 +340,21 @@ function AddToCartButton({
   disabled,
   lines,
   onClick,
+  onAddToCartSuccess
 }: {
   analytics?: unknown;
   children: React.ReactNode;
   disabled?: boolean;
   lines: CartLineInput[];
   onClick?: () => void;
+  onAddToCartSuccess?: () => void;
 }) {
+  const handleAddToCart = async () => {
+    await onClick?.();
+    onAddToCartSuccess?.();
+  };
+
+
   return (
     <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher: FetcherWithComponents<any>) => (
@@ -350,7 +367,7 @@ function AddToCartButton({
           <button
           className="btn-qtyselector"
             type="submit"
-            onClick={onClick}
+            onClick={handleAddToCart}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
