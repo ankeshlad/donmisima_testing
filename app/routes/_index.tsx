@@ -51,6 +51,12 @@ function AddToCartButton({
   onClick?: () => void;
 }) {
   return (
+    const handleAddToCart = async () => {
+      await onClick?.();
+      onAddToCartSuccess?.();
+    };
+
+    
     <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher: FetcherWithComponents<any>) => (
         <>
@@ -62,14 +68,7 @@ function AddToCartButton({
           <button 
           className="btn-qtyselector"
             type="submit"
-            // onClick={onClick}
-            onClick={() => {
-              onClick && onClick(); // Call the onClick function provided by the parent
-              if (fetcher.state === 'idle') {
-                // Reset quantity to 1 after successfully adding the product to the cart
-                setQuantity(1);
-              }
-            }}
+            onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
@@ -257,7 +256,7 @@ function QuantitySelector({ product }) {
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
 
-  const handleAddToCart = () => {
+  const handleAddToCartSuccess  = () => {
     toast(
       <div className={`addedToCart ${product.description.split(", ")[0].split('- ')[1].slice(0, 5).toLowerCase()}`}>
         <Image
@@ -272,6 +271,7 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
+    setQuantity(1);
   };
  
   return (
@@ -287,7 +287,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={handleAddToCart}
+        onAddToCartSuccess={handleAddToCartSuccess}
       >
         Add to Cart
       </AddToCartButton>
