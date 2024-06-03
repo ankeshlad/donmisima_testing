@@ -272,12 +272,8 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    console.log("test45");
     setQuantity(1);
   };
-  useEffect(() => {
-    setQuantity(1); // Reset quantity to 1 when onAddToCartSuccess changes
-  }, [handleAddToCartSuccess]);
   
   return (
     <div className="quantity-selector">
