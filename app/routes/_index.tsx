@@ -52,13 +52,12 @@ function AddToCartButton({
   onClick?: () => void;
   onAddToCartSuccess?: () => void;
 }) {
-  return (
-    const handleAddToCart = async () => {
-      await onClick?.();
-      onAddToCartSuccess?.();
-    };
+  const handleAddToCart = async () => {
+    await onClick?.();
+    onAddToCartSuccess?.();
+  };
 
-    
+  return (
     <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher: FetcherWithComponents<any>) => (
         <>
@@ -70,7 +69,7 @@ function AddToCartButton({
           <button 
           className="btn-qtyselector"
             type="submit"
-            onClick={onClick}
+            onClick={handleAddToCart}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
