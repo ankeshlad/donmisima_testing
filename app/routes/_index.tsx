@@ -1,7 +1,7 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction, useNavigate} from '@remix-run/react';
 import {Suspense} from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import type {RecommendedProductsQuery} from 'storefrontapi.generated';
 import Hero from '~/components/Hero';
@@ -256,6 +256,7 @@ function QuantitySelector({ product }) {
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
+  const initialQuantityRef = useRef(quantity);
 
   const handleAddToCartSuccess  = () => {
     toast(
@@ -272,6 +273,7 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
+    setQuantity(initialQuantityRef.current); 
   };
   
   return (
@@ -287,7 +289,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onAddToCartSuccess={()=> setQuantity(1)}
+        onAddToCartSuccess={handleAddToCartSuccess}
       >
         Add to Cart
       </AddToCartButton>
