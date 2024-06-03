@@ -279,8 +279,8 @@ function QuantitySelector({ product }) {
 
   useEffect(() => {
     if (resetQuantity) {
-      setQuantity(1); // Reset quantity to 1 after adding to cart
-      setResetQuantity(false); // Reset the flag
+      setQuantity(1);
+      setResetQuantity(false);
     }
   }, [resetQuantity]);
   

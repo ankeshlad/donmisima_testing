@@ -282,6 +282,7 @@ function ProductItem({
 
 function QuantitySelector({ product }) {
   const [quantity, setQuantity] = useState(1);
+  const [resetQuantity, setResetQuantity] = useState(false);
 
   const handleIncrease = () => setQuantity(quantity + 1);
   const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
@@ -304,6 +305,13 @@ function QuantitySelector({ product }) {
     );
   };
 
+  useEffect(() => {
+    if (resetQuantity) {
+      setQuantity(1);
+      setResetQuantity(false);
+    }
+  }, [resetQuantity]);
+
   return (
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
@@ -317,7 +325,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={handleAddToCart}
+        onAddToCartSuccess={handleAddToCartSuccess}
       >
         Add to Cart
       </AddToCartButton>
@@ -331,13 +339,21 @@ function AddToCartButton({
   disabled,
   lines,
   onClick,
+  onAddToCartSuccess
 }: {
   analytics?: unknown;
   children: React.ReactNode;
   disabled?: boolean;
   lines: CartLineInput[];
   onClick?: () => void;
+  onAddToCartSuccess?: () => void;
 }) {
+  const handleAddToCart = async () => {
+    await onClick?.();
+    onAddToCartSuccess?.();
+  };
+
+
   return (
     <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher: FetcherWithComponents<any>) => (
@@ -350,7 +366,7 @@ function AddToCartButton({
           <button
           className="btn-qtyselector"
             type="submit"
-            onClick={onClick}
+            onClick={handleAddToCart}
             disabled={disabled ?? fetcher.state !== 'idle'}
           >
             {children}
