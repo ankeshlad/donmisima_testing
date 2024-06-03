@@ -272,7 +272,6 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-    setQuantity(1);
   };
   
   return (
@@ -288,7 +287,7 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onAddToCartSuccess={handleAddToCartSuccess}
+        onAddToCartSuccess={()=> setQuantity(1)}
       >
         Add to Cart
       </AddToCartButton>
