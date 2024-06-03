@@ -246,9 +246,9 @@ function RecommendedProducts({
 function QuantitySelector({ product }) {
   const [quantity, setQuantity] = useState(1);
 
-  const handleIncrease = () => setQuantity(quantity + 1);
-  const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
-  const handleChange = (e) => setQuantity(parseInt(e.target.value) || 1);
+  const handleIncrease = () => setQuantity((prevQuantity) => prevQuantity + 1);
+  const handleDecrease = () => setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
+  const handleChange = (e) => setQuantity(parseInt(e.target.value, 10) || 1);
 
   const handleAddToCart = () => {
     toast(
@@ -265,30 +265,10 @@ function QuantitySelector({ product }) {
         </div>
       </div>
     );
-  };
-  const handleAddToCartButtonClick = () => {
-    handleAddToCart();
     setQuantity(1); // Reset the quantity after handling the add to cart action
   };
 
   return (
-    // <div className="quantity-selector">
-    //   <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
-    //   <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
-    //   <button className="incrementqtyselector" onClick={handleIncrease}>+</button>
-     
-    //   <AddToCartButton
-    //     lines={[
-    //       {
-    //         merchandiseId: product.variants.nodes[0].id,
-    //         quantity: quantity,
-    //       },
-    //     ]}
-    //     onClick={handleAddToCartButtonClick}
-    //   >
-    //     Add to Cart
-    //   </AddToCartButton>
-    // </div>
     <div className="quantity-selector">
       <button className="decrementqtyselector" onClick={handleDecrease}>-</button>
       <input className="quantityselector" type="number" value={quantity} onChange={handleChange} min="1" />
@@ -301,13 +281,14 @@ function QuantitySelector({ product }) {
             quantity: quantity,
           },
         ]}
-        onClick={handleAddToCartButtonClick}
+        onClick={handleAddToCart}
       >
         Add to Cart
       </AddToCartButton>
     </div>
   );
 }
+
 
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
