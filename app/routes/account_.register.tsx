@@ -30,6 +30,7 @@ export async function action({request, context}: ActionFunctionArgs) {
 
   const {storefront, session} = context;
   const form = await request.formData();
+  const firstName = form.has('firstName') ? String(form.get('firstName')) : ''; // Get the value of the new field
   const email = String(form.has('email') ? form.get('email') : '');
   const password = form.has('password') ? String(form.get('password')) : null;
   const passwordConfirm = form.has('passwordConfirm')
@@ -113,17 +114,14 @@ export default function Register() {
         <Form method="POST">
           <fieldset>
           <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              required
-              placeholder="name"
-              aria-label="name"
-              className="login-input"
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
-            />
+          aria-label="First name"
+          autoComplete="firstName"
+          id="firstName"
+          name="firstName"
+          placeholder="First name"
+          required
+          type="text"
+        />
             <input
               id="email"
               name="email"
