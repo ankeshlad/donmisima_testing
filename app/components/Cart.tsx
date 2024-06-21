@@ -154,9 +154,6 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
 
   return (
     <div className="cart-checkout-button-wrapper">
-      {/* <a className="cart-checkout-button" href={checkoutUrl} target="_self">
-        <p>Checkout 1</p>
-      </a> */}
       <a className="cart-checkout-button" href={checkoutUrl} target="_self">
         <p>Place Order</p>
       </a>
