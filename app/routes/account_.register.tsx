@@ -30,7 +30,8 @@ export async function action({request, context}: ActionFunctionArgs) {
 
   const {storefront, session} = context;
   const form = await request.formData();
-  const firstName = form.has('firstName') ? String(form.get('firstName')) : ''; // Get the value of the new field
+  const firstName = form.has('firstName') ? String(form.get('firstName')) : '';
+  const lastName = form.has('lastName') ? String(form.get('lastName')) : '';
   const email = String(form.has('email') ? form.get('email') : '');
   const password = form.has('password') ? String(form.get('password')) : null;
   const passwordConfirm = form.has('passwordConfirm')
@@ -52,7 +53,7 @@ export async function action({request, context}: ActionFunctionArgs) {
 
     const {customerCreate} = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
       variables: {
-        input: {firstName, email, password},
+        input: {firstName, lastName, email, password},
       },
     });
 
@@ -118,7 +119,17 @@ export default function Register() {
           autoComplete="firstName"
           id="firstName"
           name="firstName"
-          placeholder="First name"
+          placeholder="First Name"
+          required
+          type="text"
+          className="login-input"
+        />
+         <input
+          aria-label="Last name"
+          autoComplete="lastName"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name"
           required
           type="text"
           className="login-input"
