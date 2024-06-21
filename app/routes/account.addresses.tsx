@@ -245,7 +245,7 @@ export default function Addresses() {
 
 function NewAddressForm() {
   const newAddress = {
-    address1: '',
+    address1: 'test001',
     address2: '',
     city: '',
     company: '',
