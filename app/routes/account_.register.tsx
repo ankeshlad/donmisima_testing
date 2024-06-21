@@ -52,7 +52,7 @@ export async function action({request, context}: ActionFunctionArgs) {
 
     const {customerCreate} = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
       variables: {
-        input: {email, password},
+        input: {firstName, email, password},
       },
     });
 
@@ -121,6 +121,7 @@ export default function Register() {
           placeholder="First name"
           required
           type="text"
+          className="login-input"
         />
             <input
               id="email"
