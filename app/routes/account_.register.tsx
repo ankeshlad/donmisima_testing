@@ -112,6 +112,18 @@ export default function Register() {
         <h1>Register</h1>
         <Form method="POST">
           <fieldset>
+          <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              required
+              placeholder="name"
+              aria-label="name"
+              className="login-input"
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+            />
             <input
               id="email"
               name="email"
@@ -122,7 +134,7 @@ export default function Register() {
               aria-label="Email address"
               className="login-input"
               // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
+              // autoFocus
             />
             <input
               id="password"
