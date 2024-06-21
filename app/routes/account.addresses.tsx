@@ -369,7 +369,8 @@ export function AddressForm({
         <input
           aria-label="Address line 1"
           autoComplete="address-line1"
-          defaultValue="test"
+          //defaultValue={address?.address1 ?? ''}
+          defaultValue="Voie-des-Traz 20"
           id="address1"
           name="address1"
           placeholder="Address line 1*"
@@ -380,7 +381,7 @@ export function AddressForm({
         <input
           aria-label="Address line 2"
           autoComplete="address-line2"
-          defaultValue={address?.address2 ?? ''}
+          // defaultValue={address?.address2 ?? ''}
           id="address2"
           name="address2"
           placeholder="Address line 2"
@@ -390,7 +391,8 @@ export function AddressForm({
         <input
           aria-label="City"
           autoComplete="address-level2"
-          defaultValue={address?.city ?? ''}
+          // defaultValue={address?.city ?? ''}
+          defaultValue="Le Grand-Saconnex"
           id="city"
           name="city"
           placeholder="City"
@@ -401,7 +403,8 @@ export function AddressForm({
         <input
           aria-label="State"
           autoComplete="address-level1"
-          defaultValue={address?.province ?? ''}
+          // defaultValue={address?.province ?? ''}
+          defaultValue="Geneva"
           id="province"
           name="province"
           placeholder="State / Province"
@@ -412,7 +415,8 @@ export function AddressForm({
         <input
           aria-label="Zip"
           autoComplete="postal-code"
-          defaultValue={address?.zip ?? ''}
+          // defaultValue={address?.zip ?? ''}
+          defaultValue="1218"
           id="zip"
           name="zip"
           placeholder="Zip / Postal Code"
@@ -423,7 +427,8 @@ export function AddressForm({
         <input
           aria-label="Country"
           autoComplete="country-name"
-          defaultValue={address?.country ?? ''}
+          // defaultValue={address?.country ?? ''}
+          defaultValue="Switzerland"
           id="country"
           name="country"
           placeholder="Country"
