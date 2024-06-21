@@ -245,7 +245,7 @@ export default function Addresses() {
 
 function NewAddressForm() {
   const newAddress = {
-    address1: 'test001',
+    address1: '',
     address2: '',
     city: '',
     company: '',
@@ -369,7 +369,7 @@ export function AddressForm({
         <input
           aria-label="Address line 1"
           autoComplete="address-line1"
-          defaultValue={address?.address1 ?? ''}
+          defaultValue="test"
           id="address1"
           name="address1"
           placeholder="Address line 1*"
